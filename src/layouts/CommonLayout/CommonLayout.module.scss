@@ -1,0 +1,23 @@
+.commonLayout {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 1);
+  .childContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    .componentContainer {
+      flex: 1;
+      height: 100vh;
+      overflow: auto;
+      .componentBlock {
+        margin-top: 105px;
+        width: 100%;
+        padding: 32px;
+      }
+    }
+  }
+}

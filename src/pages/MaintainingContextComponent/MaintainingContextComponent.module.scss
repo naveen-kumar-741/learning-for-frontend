@@ -1,0 +1,11 @@
+.contextMaintainingDemo {
+  width: calc(100% - 300px);
+  height: 100%;
+  color: #ffffff;
+  .demoCodeBlock {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 15px;
+  }
+}

@@ -1,0 +1,30 @@
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+    .headerContent {
+        width: 100%;
+        padding: 20px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .logo {
+            height: 65px;
+        }
+        .profileIcon {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            background: url('../../../public/assets/icons/defaultUser.svg') no-repeat;
+            background-position: center;
+            background-size: 55%;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.06);
+        }
+    }
+}

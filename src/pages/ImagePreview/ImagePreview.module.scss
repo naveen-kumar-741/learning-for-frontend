@@ -1,0 +1,62 @@
+.imagePreviewDemo {
+  width: calc(100% - 300px);
+  height: 100%;
+  .contentRendererTitle {
+    font-size: 28px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
+    margin-bottom: 10px;
+  }
+  .imagePreviewDemoSection {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    .demoCodeBlock {
+      width: 50%;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      .demoUploadButtonBlock {
+        position: relative;
+        width: fit-content;
+        cursor: pointer;
+        align-self: center;
+        .demoUploadButton {
+          background-color: #ffffff;
+          color: black;
+          border-radius: 8px;
+          padding: 10px 15px;
+          cursor: pointer;
+        }
+        .demoFileSelector {
+          // margin-top: 10px;
+          display: none;
+        }
+      }
+    }
+    .demoPreviewBlock {
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .demoImagePreview,
+      .previewPlaceHolder {
+        width: 100%;
+        height: 100%;
+      }
+      .demoImagePreview {
+        object-fit: contain;
+        object-position: top;
+      }
+      .previewPlaceHolder {
+        background-color: rgba(255, 255, 255, 0.1);
+        min-height: 450px;
+        color: rgba(255, 255, 255, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}

@@ -1,16 +1,15 @@
-import React, { ChangeEvent, useContext, useRef, useState } from "react";
-import ContentRenderer, {
-  ContentData,
-} from "../../sharedComponent/ContentRenderer";
-import OnThisPage from "../../components/OnThisPage/OnThisPage";
-import { CodeBlock, obsidian } from "react-code-blocks";
-import { sidebarContext } from "../../providers/AppProvider";
-import styles from "./ImagePreview.module.scss";
+import React, { ChangeEvent, useContext, useRef, useState } from 'react';
+import ContentRenderer from '../../sharedComponent/ContentRenderer/ContentRenderer';
+import OnThisPage from '../../components/OnThisPage/OnThisPage';
+import { CodeBlock, obsidian } from 'react-code-blocks';
+import { SidebarContext } from '../../providers/AppProvider';
+import { ContentData } from '../../interfaces/DocInterface';
+import styles from './ImagePreview.module.scss';
 
 const ImagePreview: React.FC = () => {
   const contentData: ContentData[] = [
     {
-      title: "What This Page is About",
+      title: 'What This Page is About',
       paragraphs: [
         `Welcome to the Image Preview Demo! This page is dedicated to exploring a
       powerful technique that allows you to display image previews directly in
@@ -23,13 +22,13 @@ const ImagePreview: React.FC = () => {
       speeds up workflows, and maintains user engagement.`,
       ],
       referenceLink: {
-        name: "What is data URL?",
-        link: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs",
+        name: 'What is data URL?',
+        link: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs',
       },
     },
     {
-      title: "Key Concepts Covered",
-      type: "bullet",
+      title: 'Key Concepts Covered',
+      type: 'bullet',
       paragraphs: [
         `**Client-Side Image Preview:** Discover how to use client-side technologies to
         generate and display image previews instantly. This method leverages
@@ -60,12 +59,12 @@ const ImagePreview: React.FC = () => {
         responsive and user-friendly image preview feature.`,
       ],
       referenceLink: {
-        name: "What is FileReader?",
-        link: "https://developer.mozilla.org/en-US/docs/Web/API/FileReader",
+        name: 'What is FileReader?',
+        link: 'https://developer.mozilla.org/en-US/docs/Web/API/FileReader',
       },
     },
     {
-      title: "",
+      title: '',
       paragraphs: [
         `By the end of this page, you’ll have a comprehensive understanding of how
       to effectively implement image previews without relying on external
@@ -102,13 +101,12 @@ return(
   </React.Fragment>
 )`;
 
-  const { isExpand } = useContext(sidebarContext);
+  const { isExpand } = useContext(SidebarContext);
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
   const [fileUrl, setFileUrl] = useState<string>();
 
   const handleFilePreview = (fileData: ChangeEvent<HTMLInputElement>) => {
     if (fileData.target.files?.[0]) {
-      console.log(fileData.target.files?.[0]);
       const reader = new FileReader();
       reader.onload = () => {
         setFileUrl(reader.result as string);
@@ -129,15 +127,15 @@ return(
       <div className={styles.contentRendererTitle}>Code Snippet</div>
       <div
         className={`${styles.imagePreviewDemoSection} ${
-          isExpand ? "flex-column" : "flex-row"
+          isExpand ? 'flex-column' : 'flex-row'
         }`}
       >
         <div
-          className={`${styles.demoCodeBlock} ${isExpand ? "w-100" : "w-50"}`}
+          className={`${styles.demoCodeBlock} ${isExpand ? 'w-100' : 'w-50'}`}
         >
           <CodeBlock
             text={code}
-            language={"jsx"}
+            language={'jsx'}
             theme={obsidian}
             showLineNumbers={false}
           />
@@ -157,7 +155,7 @@ return(
         </div>
         <div
           className={`${styles.demoPreviewBlock} ${
-            isExpand ? "w-100" : "w-50"
+            isExpand ? 'w-100' : 'w-50'
           }`}
         >
           <span>Preview for the selected Image</span>

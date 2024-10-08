@@ -1,16 +1,15 @@
-import React, { useRef } from "react";
-import ContentRenderer, {
-  ContentData,
-} from "../../sharedComponent/ContentRenderer";
-import OnThisPage from "../../components/OnThisPage/OnThisPage";
-import styles from "./MaintainingContextComponent.module.scss";
-import { CodeBlock, obsidian } from "react-code-blocks";
-import { Link } from "react-router-dom";
+import React, { useRef } from 'react';
+import OnThisPage from '../../components/OnThisPage/OnThisPage';
+import { CodeBlock, obsidian } from 'react-code-blocks';
+import { Link } from 'react-router-dom';
+import { ContentData } from '../../interfaces/DocInterface';
+import ContentRenderer from '../../sharedComponent/ContentRenderer/ContentRenderer';
+import styles from './MaintainingContextComponent.module.scss';
 
 const MaintainingContextComponent: React.FC = () => {
   const contentData: ContentData[] = [
     {
-      title: "What This Page is About",
+      title: 'What This Page is About',
       paragraphs: [
         `This page explains the best practices for maintaining context in a React
       application when navigating between different parts of your app.
@@ -29,17 +28,17 @@ const MaintainingContextComponent: React.FC = () => {
       use **Link**, useNavigate, or the traditional **<a>** tag in your React projects.`,
       ],
       referenceLink: {
-        name: "Link from react-router-dom docs",
-        link: "https://reactrouter.com/en/main/components/link",
+        name: 'Link from react-router-dom docs',
+        link: 'https://reactrouter.com/en/main/components/link',
       },
     },
     {
-      title: "Difference between <a> tag and Link from react-router-dom",
+      title: 'Difference between <a> tag and Link from react-router-dom',
       paragraphs: [],
     },
     {
-      title: "<a> Tag:",
-      type: "bullet",
+      title: '<a> Tag:',
+      type: 'bullet',
       paragraphs: [
         `**Page Reload:** When you click on an **<a>** tag, the browser performs a full page
       reload, which means the entire page is requested from the server. This can
@@ -54,13 +53,13 @@ const MaintainingContextComponent: React.FC = () => {
       standard hyperlink.`,
       ],
       referenceLink: {
-        name: "anchor tag docs",
-        link: "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a",
+        name: 'anchor tag docs',
+        link: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a',
       },
     },
     {
-      title: "Link Component from react-router-dom:",
-      type: "bullet",
+      title: 'Link Component from react-router-dom:',
+      type: 'bullet',
       paragraphs: [
         `**Client-Side Navigation:** The **Link** component enables navigation without a
       full page reload. It leverages React’s routing capabilities to change the
@@ -78,8 +77,8 @@ const MaintainingContextComponent: React.FC = () => {
       ],
     },
     {
-      title: "When to Use Each:",
-      type: "bullet",
+      title: 'When to Use Each:',
+      type: 'bullet',
       paragraphs: [
         `**Use <a> tag:** When linking to external sites or resources outside the scope of
       your React application, where a full page load is acceptable or desired.`,
@@ -88,7 +87,7 @@ const MaintainingContextComponent: React.FC = () => {
       ],
     },
     {
-      title: "",
+      title: '',
       paragraphs: [
         `In summary, while the <a> tag is suitable for traditional web navigation, Link
       is tailored for modern React applications, ensuring smooth client-side
@@ -96,7 +95,7 @@ const MaintainingContextComponent: React.FC = () => {
       ],
     },
     {
-      title: "For Example :-",
+      title: 'For Example :-',
       paragraphs: [],
     },
   ];
@@ -121,17 +120,17 @@ const MaintainingContextComponent: React.FC = () => {
         <p>{`Example of link using <a> Tag`}</p>
         <CodeBlock
           text={code[1]}
-          language={"jsx"}
+          language={'jsx'}
           theme={obsidian}
           showLineNumbers={false}
         />
         <CodeBlock
           text={code[0]}
-          language={"jsx"}
+          language={'jsx'}
           theme={obsidian}
           showLineNumbers={false}
         />
-        <Link to={"/home"}>Link to home</Link>
+        <Link to={'/home'}>Link to home</Link>
         <a href="/home">Link by anchor tag</a>
         <p>
           NOTE: After redirecting to the home page, select the "Maintaining

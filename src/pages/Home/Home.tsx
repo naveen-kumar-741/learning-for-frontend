@@ -1,14 +1,13 @@
-import React, { useRef } from "react";
-import ContentRenderer, {
-  ContentData,
-} from "../../sharedComponent/ContentRenderer";
-import styles from "./Home.module.scss";
-import OnThisPage from "../../components/OnThisPage/OnThisPage";
+import React, { useRef } from 'react';
+import ContentRenderer from '../../sharedComponent/ContentRenderer/ContentRenderer';
+import OnThisPage from '../../components/OnThisPage/OnThisPage';
+import { ContentData } from '../../interfaces/DocInterface';
+import styles from './Home.module.scss';
 
 const Home: React.FC = () => {
   const contentData: ContentData[] = [
     {
-      title: "Introduction:",
+      title: 'Introduction:',
       paragraphs: [
         `In the ever-evolving landscape of web development, TypeScript and
             React have emerged as powerful tools that can significantly enhance
@@ -31,7 +30,7 @@ const Home: React.FC = () => {
       ],
     },
     {
-      title: "What is React.js?",
+      title: 'What is React.js?',
       paragraphs: [
         `React.js, commonly referred to as React, is a powerful JavaScript
             library developed by Facebook for building user interfaces,
@@ -41,12 +40,12 @@ const Home: React.FC = () => {
             its simplicity, flexibility, and performance.`,
       ],
       referenceLink: {
-        name: "React.js Docs",
-        link: "https://react.dev/learn",
+        name: 'React.js Docs',
+        link: 'https://react.dev/learn',
       },
     },
     {
-      title: "What is TypeScript?",
+      title: 'What is TypeScript?',
       paragraphs: [
         `TypeScript is a statically typed superset of JavaScript developed
             and maintained by Microsoft. It builds upon JavaScript by adding
@@ -62,8 +61,8 @@ const Home: React.FC = () => {
           work together to create even more efficient and reliable code.`,
       ],
       referenceLink: {
-        name: "TypeScript Docs",
-        link: "https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html",
+        name: 'TypeScript Docs',
+        link: 'https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html',
       },
     },
   ];

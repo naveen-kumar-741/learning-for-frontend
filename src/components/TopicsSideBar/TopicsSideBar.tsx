@@ -1,16 +1,12 @@
 import React, { useContext, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { sidebarContext } from '../../providers/AppProvider';
+import { SidebarContext } from '../../providers/AppProvider';
+import { TopicsType } from '../../interfaces/DocInterface';
 import styles from './TopicsSideBar.module.scss';
-
-interface TopicsType {
-  name: string;
-  route: string;
-}
 
 const TopicsSideBar: React.FC = () => {
   // const [isExpand, setIsExpand] = useState<boolean>(false);
-  const { isExpand, setIsExpand } = useContext(sidebarContext);
+  const { isExpand, setIsExpand } = useContext(SidebarContext);
   const location = useLocation();
 
   const topics: TopicsType[] = useMemo(

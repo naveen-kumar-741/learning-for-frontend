@@ -1,11 +1,6 @@
 import React from 'react';
-import { ReferenceLinkType } from '../../sharedComponent/ContentRenderer';
+import { OnThisPageProps } from '../../interfaces/DocInterface';
 import styles from './OnThisPage.module.scss';
-
-interface OnThisPageProps {
-  // sectionsRef: React.MutableRefObject<(HTMLElement | null)[]>;
-  referenceLink: ReferenceLinkType[];
-}
 
 const OnThisPage: React.FC<OnThisPageProps> = ({ referenceLink }) => {
   return (

@@ -1,26 +1,7 @@
 import React, { ForwardedRef } from "react";
 import Markdown from "react-markdown";
+import { ContentRendererProps } from "../../interfaces/DocInterface";
 import styles from "./ContentRenderer.module.scss";
-
-type ContentType = "para" | "bullet";
-
-export interface ReferenceLinkType {
-  name: string;
-  link: string;
-}
-
-export interface ContentData {
-  title: string;
-  paragraphs: string[];
-  referenceLink?: ReferenceLinkType;
-  type?: ContentType;
-}
-
-interface CustomProps {
-  contentData: ContentData;
-}
-
-type ContentRendererProps = CustomProps & React.HTMLAttributes<HTMLElement>;
 
 const ContentRenderer = React.forwardRef<HTMLElement, ContentRendererProps>(
   ({ contentData, ...rest }, ref: ForwardedRef<HTMLElement>) => {

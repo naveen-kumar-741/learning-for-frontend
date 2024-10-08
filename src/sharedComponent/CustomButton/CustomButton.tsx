@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./CustomButton.module.scss";
+import React from 'react';
+import styles from './CustomButton.module.scss';
 
 interface CustomInputProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {}

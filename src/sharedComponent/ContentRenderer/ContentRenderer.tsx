@@ -1,15 +1,15 @@
-import React, { ForwardedRef } from "react";
-import Markdown from "react-markdown";
-import { ContentRendererProps } from "../../interfaces/DocInterface";
-import styles from "./ContentRenderer.module.scss";
+import React, { ForwardedRef } from 'react';
+import Markdown from 'react-markdown';
+import { ContentRendererProps } from '../../interfaces/DocInterface';
+import styles from './ContentRenderer.module.scss';
 
 const ContentRenderer = React.forwardRef<HTMLElement, ContentRendererProps>(
   ({ contentData, ...rest }, ref: ForwardedRef<HTMLElement>) => {
-    const type = contentData.type || "para";
+    const type = contentData.type || 'para';
     return (
       <section className={styles.contentRendererSection} ref={ref} {...rest}>
         <div className={styles.contentRendererTitle}>{contentData.title}</div>
-        {type === "para" ? (
+        {type === 'para' ? (
           <div className={styles.contentRendererPara}>
             {contentData.paragraphs.map((para, idx) => (
               <p key={idx}>

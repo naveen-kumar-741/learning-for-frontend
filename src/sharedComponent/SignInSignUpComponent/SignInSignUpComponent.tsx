@@ -1,16 +1,13 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { FieldValues, Path } from "react-hook-form";
-import { fetchAuthSession } from "aws-amplify/auth";
-import { Hub } from "aws-amplify/utils";
-import CustomButton from "../CustomButton/CustomButton";
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { FieldValues, Path } from 'react-hook-form';
+import CustomButton from '../CustomButton/CustomButton';
 import {
   PageType,
   SignInSignUpComponentProps,
-} from "../../interfaces/SignInSignUpInterfaces";
-import CustomInput from "../CustomInput/CustomInput";
-import styles from "./SignInSignUpComponent.module.scss";
-import moment from "moment";
+} from '../../interfaces/SignInSignUpInterfaces';
+import CustomInput from '../CustomInput/CustomInput';
+import styles from './SignInSignUpComponent.module.scss';
 
 const SignInSignUpComponent = <T extends FieldValues>({
   useFormReturn,
@@ -22,18 +19,18 @@ const SignInSignUpComponent = <T extends FieldValues>({
   const {
     register,
     handleSubmit,
-    setValue,
     watch,
     formState: { errors },
   } = useFormReturn;
 
   const watchAllFields = watch();
   useEffect(() => {
-    setErrorMessage("");
+    setErrorMessage('');
   }, [
     watchAllFields?.email,
     watchAllFields.password,
     watchAllFields?.confirm_password,
+    setErrorMessage,
   ]);
 
   // Hub.listen("auth", ({ payload: { event }, ...rest }) => {
@@ -65,36 +62,36 @@ const SignInSignUpComponent = <T extends FieldValues>({
               label="Email Id"
               type="text"
               errorMessage={errors.email?.message as string}
-              {...register("email" as Path<T>)}
+              {...register('email' as Path<T>)}
             />
 
             <CustomInput
               label="Password"
               type="password"
               errorMessage={errors.password?.message as string}
-              {...register("password" as Path<T>)}
+              {...register('password' as Path<T>)}
             />
 
-            {type === "signUp" && (
+            {type === 'signUp' && (
               <CustomInput
                 label="Confirm Password"
                 type="password"
                 errorMessage={errors.confirm_password?.message as string}
-                {...register("confirm_password" as Path<T>)}
+                {...register('confirm_password' as Path<T>)}
               />
             )}
             <SignInSignUpSwitcher type={type} />
             <div
               className={`formError d-flex align-items-center justify-content-center ${
-                errorMessage && "show"
+                errorMessage && 'show'
               }`}
             >
-              <span className="ic-form-invalid" />{" "}
+              <span className="ic-form-invalid" />{' '}
               <span className="ms-1">{errorMessage}</span>
             </div>
           </div>
           <CustomButton className={styles.signInBtn} type="submit">
-            Sign {type === "signIn" ? "In" : "Up"}
+            Sign {type === 'signIn' ? 'In' : 'Up'}
           </CustomButton>
         </form>
       </div>
@@ -103,7 +100,7 @@ const SignInSignUpComponent = <T extends FieldValues>({
 };
 
 const SignInSignUpSwitcher: React.FC<{ type: PageType }> = ({ type }) => {
-  if (type === "signIn") {
+  if (type === 'signIn') {
     return (
       <span className={styles.signInFormText}>
         Don't have an account, <Link to="/sign-up">Sign Up</Link>

@@ -1,41 +1,41 @@
-import { fetchAuthSession } from "aws-amplify/auth";
-import moment from "moment";
+import { fetchAuthSession } from 'aws-amplify/auth';
+import moment from 'moment';
 
 export const getUser = async () => {
   try {
     const userData = await fetchAuthSession();
 
     localStorage.setItem(
-      "jwtToken",
-      userData.tokens?.accessToken.toString() ?? ""
+      'jwtToken',
+      userData.tokens?.accessToken.toString() ?? ''
     );
     if (userData?.tokens?.accessToken?.payload?.exp) {
       localStorage.setItem(
-        "expiryTime",
+        'expiryTime',
         moment(new Date(userData?.tokens?.accessToken?.payload?.exp * 1000))
           .utc()
           .format()
       );
     }
     localStorage.setItem(
-      "idToken",
-      userData?.tokens?.idToken?.toString() ?? ""
+      'idToken',
+      userData?.tokens?.idToken?.toString() ?? ''
     );
 
     return userData;
   } catch {
-    return console.log("Not signed in");
+    return console.log('Not signed in');
   }
 };
 
 export const getRandomColor = () => {
-  let color = "#";
-  const letters = "0123456789ABCDEF";
+  let color = '#';
+  const letters = '0123456789ABCDEF';
   let isLightColor = true;
 
   // Keep generating a random color until it's not too close to white
   while (isLightColor) {
-    color = "#";
+    color = '#';
     for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
     }
@@ -58,8 +58,8 @@ const isColorTooLight = (hexColor: string) => {
 };
 
 export const generateDataUrl = (initials: string) => {
-  const canvas = document.createElement("canvas");
-  const context = canvas.getContext("2d");
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
 
   if (context) {
     canvas.width = 40;
@@ -71,15 +71,15 @@ export const generateDataUrl = (initials: string) => {
 
     // Text settings
     context.font = `20px Arial`;
-    context.fillStyle = "#fff";
-    context.textAlign = "center";
-    context.textBaseline = "middle";
+    context.fillStyle = '#fff';
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
 
     // Draw initials
     context.fillText(initials, canvas.width / 2, canvas.height / 2);
 
     // Get the data URL from the canvas
-    const dataUrl = canvas.toDataURL("image/png");
+    const dataUrl = canvas.toDataURL('image/png');
     return dataUrl;
   }
 };

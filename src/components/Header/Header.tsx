@@ -46,6 +46,7 @@ const Header: React.FC = () => {
             <img
               src={currentUserData.profileUrl}
               className={styles.profileIcon}
+              alt="user profile pic"
             />
           ) : (
             <div className={`${styles.profileIcon} ${styles.default}`} />

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import styles from "./CustomInput.module.scss";
+import React, { useState } from 'react';
+import styles from './CustomInput.module.scss';
 
 interface CustomInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -14,12 +14,12 @@ const CustomInput: React.FC<CustomInputProps> = React.forwardRef<
   return (
     <div className={styles.customInput}>
       {label && <label>{label}</label>}
-      {rest.type === "password" ? (
+      {rest.type === 'password' ? (
         <div className={styles.passwordWrapper}>
           <input
             ref={ref}
             {...rest}
-            type={showPassword ? "text" : "password"}
+            type={showPassword ? 'text' : 'password'}
           />
           <span
             className={styles.passwordIcon}
@@ -64,10 +64,10 @@ const CustomInput: React.FC<CustomInputProps> = React.forwardRef<
       )}
       <div
         className={`formError d-flex align-items-center  ${
-          errorMessage && "show"
+          errorMessage && 'show'
         }`}
       >
-        <span className="ic-form-invalid" />{" "}
+        <span className="ic-form-invalid" />{' '}
         <span className="ms-1">{errorMessage}</span>
       </div>
     </div>

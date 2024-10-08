@@ -5,16 +5,12 @@ import {
   Dispatch,
   SetStateAction,
   useEffect,
-} from "react";
-import { IntlProvider } from "react-intl";
-import messages from "../utils/messages";
-import {
-  LazyQueryExecFunction,
-  OperationVariables,
-  useLazyQuery,
-} from "@apollo/client";
-import { GET_CURRENT_USER } from "../queries/AuthQuery";
-import { signOut } from "aws-amplify/auth";
+} from 'react';
+import { IntlProvider } from 'react-intl';
+import messages from '../utils/messages';
+import { useLazyQuery } from '@apollo/client';
+import { GET_CURRENT_USER } from '../queries/AuthQuery';
+import { signOut } from 'aws-amplify/auth';
 
 interface SidebarContextType {
   isExpand: boolean;
@@ -50,24 +46,24 @@ export const AppContext = createContext<AppContextType>({
 export default function AppProvider({ children }: PropsWithChildren) {
   const [isExpand, setIsExpand] = useState<boolean>(false);
   const [currentUserData, setCurrentUserData] = useState<CurrentUserData>();
-  const locale = "en";
+  const locale = 'en';
 
   const [getCurrentUserData] = useLazyQuery(GET_CURRENT_USER, {
-    fetchPolicy: "no-cache",
+    fetchPolicy: 'no-cache',
     onCompleted: (data) => {
       setCurrentUserData(data?.getCurrentUserData);
     },
     onError: (err) => {
-      console.log("Error on GetCurrentUser", err.message);
+      console.log('Error on GetCurrentUser', err.message);
       setCurrentUserData(undefined);
     },
   });
 
   const refetchCurrentUserData = async () => {
-    if (localStorage.getItem("jwtToken")) {
+    if (localStorage.getItem('jwtToken')) {
       await getCurrentUserData();
     } else {
-      console.log("Token not found");
+      console.log('Token not found');
       setCurrentUserData(undefined);
     }
   };

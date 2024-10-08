@@ -22,3 +22,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.formError {
+  display: none;
+  color: #ef4347;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  .ic-form-invalid {
+    display: none;
+  }
+}
+
+.formError.show {
+  display: block;
+  width: 100%;
+  .ic-form-invalid {
+    display: block;
+  }
+}
+
+#profileIcon {
+  background-color: rgb(196 196 196);
+  .popover-arrow::after {
+    border-bottom-color: rgb(196 196 196);
+  }
+}

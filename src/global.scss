@@ -43,9 +43,21 @@ code {
   }
 }
 
-#profileIcon {
+#profileIcon,
+#addPeopleIcon {
   background-color: rgb(196 196 196);
   .popover-arrow::after {
-    border-bottom-color: rgb(196 196 196);
+    border-right-color: rgb(196 196 196);
   }
+}
+
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scroll-bar::-webkit-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  scroll-behavior: smooth;
 }

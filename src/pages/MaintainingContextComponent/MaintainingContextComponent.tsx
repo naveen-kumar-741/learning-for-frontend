@@ -102,8 +102,8 @@ const MaintainingContextComponent: React.FC = () => {
   const sectionsRef = useRef<(HTMLElement | null)[]>([]);
 
   const code = [
-    `<a href="/home">Link by anchor tag</a>`,
-    `<Link to={"/home"}>Link</Link>`,
+    `<a href="/doc">Link by anchor tag</a>`,
+    `<Link to={"/doc"}>Link</Link>`,
   ];
 
   return (
@@ -130,8 +130,8 @@ const MaintainingContextComponent: React.FC = () => {
           theme={obsidian}
           showLineNumbers={false}
         />
-        <Link to={'/home'}>Link to home</Link>
-        <a href="/home">Link by anchor tag</a>
+        <Link to={'/doc'}>Link to home</Link>
+        <a href="/doc">Link by anchor tag</a>
         <p>
           NOTE: After redirecting to the home page, select the "Maintaining
           Context" option from the sidebar. You'll notice that the page

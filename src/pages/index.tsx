@@ -9,31 +9,36 @@ import MaintainingContextComponent from './MaintainingContextComponent/Maintaini
 import SignInPage from './SignInPage/SignInPage';
 import SignUpPage from './SignUpPage/SignUpPage';
 import AuthRoutes from '../layouts/AuthRoutes';
+import ChatComponent from './ChatComponent/ChatComponent';
 
 const App = () => {
   return (
     <AppProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="home" />} />
+          <Route path="/" element={<Navigate to="chat" />} />
           <Route element={<PrivateRoutes />}>
             <Route
-              path="home-private"
+              path="/doc-private"
               element={<CommonLayout component={Home} />}
             />
           </Route>
-          <Route path="home" element={<CommonLayout component={Home} />} />
+          <Route path="/doc" element={<CommonLayout component={Home} />} />
           <Route
-            path="img-preview-demo"
+            path="/chat/:roomId?"
+            element={<CommonLayout component={ChatComponent} />}
+          />
+          <Route
+            path="/img-preview-demo"
             element={<CommonLayout component={ImagePreview} />}
           />
           <Route
-            path="maintain-context"
+            path="/maintain-context"
             element={<CommonLayout component={MaintainingContextComponent} />}
           />
           <Route element={<AuthRoutes />}>
-            <Route path="sign-in" element={<SignInPage />} />
-            <Route path="sign-up" element={<SignUpPage />} />
+            <Route path="/sign-in" element={<SignInPage />} />
+            <Route path="/sign-up" element={<SignUpPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

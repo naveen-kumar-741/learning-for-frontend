@@ -52,7 +52,7 @@ const SignUpPage: React.FC = () => {
         if (isSignedIn) {
           await getUser();
           refetchCurrentUserData();
-          navigate('/home');
+          navigate('/doc');
         }
       } catch (e: unknown) {
         const errorMsg = (e as { message: string })?.message;

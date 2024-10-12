@@ -11,11 +11,9 @@ import messages from '../utils/messages';
 import { useLazyQuery } from '@apollo/client';
 import { GET_CURRENT_USER } from '../queries/AuthQuery';
 import { signOut } from 'aws-amplify/auth';
-
-interface SidebarContextType {
-  isExpand: boolean;
-  setIsExpand: Dispatch<SetStateAction<boolean>>;
-}
+import { useLocation } from 'react-router-dom';
+import SideBarProvider from './SidebarProvider';
+import ChatProvider from './ChatProvider';
 
 interface CurrentUserData {
   id: string;
@@ -32,11 +30,6 @@ interface AppContextType {
   handleSignOut: () => void;
 }
 
-export const SidebarContext = createContext<SidebarContextType>({
-  isExpand: false,
-  setIsExpand: () => {},
-});
-
 export const AppContext = createContext<AppContextType>({
   currentUserData: undefined,
   refetchCurrentUserData: async () => {},
@@ -44,7 +37,6 @@ export const AppContext = createContext<AppContextType>({
 });
 
 export default function AppProvider({ children }: PropsWithChildren) {
-  const [isExpand, setIsExpand] = useState<boolean>(false);
   const [currentUserData, setCurrentUserData] = useState<CurrentUserData>();
   const locale = 'en';
 
@@ -55,7 +47,9 @@ export default function AppProvider({ children }: PropsWithChildren) {
     },
     onError: (err) => {
       console.log('Error on GetCurrentUser', err.message);
-      setCurrentUserData(undefined);
+      if (err.message !== 'ACCESS_TOKEN_EXPIRED') {
+        // handleSignOut();
+      }
     },
   });
 
@@ -64,7 +58,7 @@ export default function AppProvider({ children }: PropsWithChildren) {
       await getCurrentUserData();
     } else {
       console.log('Token not found');
-      setCurrentUserData(undefined);
+      handleSignOut();
     }
   };
 
@@ -91,9 +85,9 @@ export default function AppProvider({ children }: PropsWithChildren) {
           handleSignOut,
         }}
       >
-        <SidebarContext.Provider value={{ isExpand, setIsExpand }}>
-          {children}
-        </SidebarContext.Provider>
+        <ChatProvider>
+          <SideBarProvider>{children}</SideBarProvider>
+        </ChatProvider>
       </AppContext.Provider>
     </IntlProvider>
   );

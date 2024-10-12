@@ -2,7 +2,7 @@ import React, { ChangeEvent, useContext, useRef, useState } from 'react';
 import ContentRenderer from '../../sharedComponent/ContentRenderer/ContentRenderer';
 import OnThisPage from '../../components/OnThisPage/OnThisPage';
 import { CodeBlock, obsidian } from 'react-code-blocks';
-import { SidebarContext } from '../../providers/AppProvider';
+import { SidebarContext } from '../../providers/SidebarProvider';
 import { ContentData } from '../../interfaces/DocInterface';
 import styles from './ImagePreview.module.scss';
 

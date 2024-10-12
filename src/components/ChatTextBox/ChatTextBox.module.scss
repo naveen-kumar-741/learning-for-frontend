@@ -1,0 +1,17 @@
+.chatMessageField {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+
+  .sendIcon {
+    cursor: pointer;
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: calc(50% - 15px);
+    right: 15px;
+  }
+}

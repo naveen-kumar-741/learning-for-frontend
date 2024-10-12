@@ -1,4 +1,5 @@
-.customInput {
+.customInputForLight,
+.customInputForDark {
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -8,8 +9,8 @@
     input {
       width: 100%;
     }
-    input[type="text"],
-    input[type="password"] {
+    input[type='text'],
+    input[type='password'] {
       padding-right: 50px;
     }
     .passwordIcon {
@@ -24,20 +25,23 @@
       justify-content: center;
     }
   }
-  input[type="email"],
-  input[type="password"],
-  input[type="text"],
-  input[type="number"] {
+  input[type='email'],
+  input[type='password'],
+  input[type='text'],
+  input[type='number']:focus {
+    outline: none;
+  }
+}
+
+.customInputForLight {
+  input[type='email'],
+  input[type='password'],
+  input[type='text'],
+  input[type='number'] {
     color: #000000;
     background-color: transparent;
     border: 0.5px solid rgba(0, 0, 0, 0.25);
     padding: 10px 8px;
-  }
-  input[type="email"],
-  input[type="password"],
-  input[type="text"],
-  input[type="number"]:focus {
-    outline: none;
   }
 
   input:-webkit-autofill,
@@ -46,6 +50,27 @@
     background-color: transparent !important;
     -webkit-text-fill-color: #000000;
     -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+    // border: 0.5px solid #403d54 !important;
+  }
+}
+.customInputForDark {
+  width: 100%;
+  input[type='email'],
+  input[type='password'],
+  input[type='text'],
+  input[type='number'] {
+    color: #ffffff;
+    background-color: transparent;
+    border: 0.5px solid rgba(255, 255, 255, 0.03);
+    padding: 10px 8px;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    background-color: transparent !important;
+    -webkit-text-fill-color: #ffffff;
+    -webkit-box-shadow: 0 0 0px 1000px #000000 inset;
     // border: 0.5px solid #403d54 !important;
   }
 }

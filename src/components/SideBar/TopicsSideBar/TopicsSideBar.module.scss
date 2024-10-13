@@ -1,0 +1,30 @@
+.tabMenu {
+  display: inline-block;
+  width: 300px;
+  padding: 25px 25px 0px 25px;
+  text-align: center;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 18px;
+}
+.tabMenu:hover {
+  background-color: rgba(255, 255, 255, 0.01);
+  color: rgba(255, 255, 255, 0.75);
+}
+.tabMenu::after {
+  content: '';
+  display: block;
+  margin-top: 25px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  height: 1px;
+}
+.tabMenu:last-child {
+  padding: 25px;
+}
+.tabMenu:last-child::after {
+  display: none;
+}
+.activeTab {
+  color: rgba(255, 255, 255, 1) !important;
+}

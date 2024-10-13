@@ -1,5 +1,5 @@
 import Header from '../../components/Header/Header';
-import TopicsSideBar from '../../components/TopicsSideBar/TopicsSideBar';
+import SideBar from '../../components/SideBar/SideBar';
 import styles from './CommonLayout.module.scss';
 
 interface PropType {
@@ -11,7 +11,7 @@ const CommonLayout: React.FC<PropType> = ({ component: Component }) => {
     <div className={styles.commonLayout}>
       <Header />
       <div className={styles.childContainer}>
-        <TopicsSideBar />
+        <SideBar />
         <div className={styles.componentContainer}>
           <div className={styles.componentBlock}>
             <Component />

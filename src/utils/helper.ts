@@ -83,3 +83,28 @@ export const generateDataUrl = (initials: string) => {
     return dataUrl;
   }
 };
+
+export function formatTimestamp(timestamp: Date) {
+  const date = new Date(timestamp);
+
+  const options: Intl.DateTimeFormatOptions = {
+    month: 'short', // "Aug"
+    day: 'numeric', // 5
+    hour: 'numeric', // 11
+    minute: '2-digit', // 34
+    hour12: true, // AM/PM format
+  };
+
+  return date.toLocaleString('en-US', options);
+}
+
+export function compareWithCurrentTime(timestamp: Date): boolean {
+  const currentTime = new Date();
+  const inputTime = new Date(timestamp);
+
+  // Extract minute-level timestamps by removing seconds and milliseconds
+  const currentMinutes = Math.floor(currentTime.getTime() / (1000 * 60));
+  const inputMinutes = Math.floor(inputTime.getTime() / (1000 * 60));
+
+  return inputMinutes === currentMinutes;
+}

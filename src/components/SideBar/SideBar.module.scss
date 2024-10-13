@@ -1,0 +1,68 @@
+.sideBar {
+  // width: 50px;
+  height: calc(100vh - 105px);
+  background-color: rgba(255, 255, 255, 0.05);
+  display: flex;
+  .sideBarTab {
+    width: 50px;
+    height: 205px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.04);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    .sideBarTabText {
+      text-decoration: none;
+      padding: 15px 0px;
+      color: #ffffff;
+      font-size: 18px;
+      writing-mode: vertical-lr;
+      display: inline-block;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+    }
+  }
+  .sideBarTab:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+  }
+  .sideBarBtn {
+    .active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+  .sideBarExpandView {
+    height: 100%;
+    transition: 1s width;
+    background-color: rgba(255, 255, 255, 0.01);
+    overflow: hidden;
+  }
+  .isExpand {
+    width: 300px;
+  }
+  .isClosed {
+    width: 0px;
+  }
+}
+
+// .addPeoplePopover {
+//   min-width: 250px;
+//   min-height: 300px;
+//   padding: 15px;
+//   display: flex;
+//   flex-direction: column;
+//   .addPeopleOption {
+//     cursor: pointer;
+//     display: inline-block;
+//     width: 100%;
+//     padding: 10px;
+//     text-align: center;
+//     font-weight: 600;
+//     color: rgba(0, 0, 0, 0.75);
+//     text-decoration: none;
+//   }
+//   .addPeopleOption:hover {
+//     background-color: rgba(255, 255, 255, 0.5);
+//   }
+// }

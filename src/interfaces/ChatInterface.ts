@@ -26,6 +26,10 @@ export interface MessageType {
   message: string;
   id: string;
   user: UserType;
+  room: {
+    id: string;
+  };
+  createdAt?: Date;
 }
 
 export interface GetRoomByIdResponse extends RoomType {

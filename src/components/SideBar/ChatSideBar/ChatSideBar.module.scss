@@ -1,0 +1,55 @@
+.chatSection {
+  height: 50%;
+  width: 285px;
+  margin: 0 7.5px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: #ffffff;
+  border-radius: 8px;
+  .sectionHeader {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 0 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    .addPeopleIcon {
+      cursor: pointer;
+      width: 27px;
+      height: 27px;
+      object-position: center;
+    }
+    .addPeopleText {
+      padding: 15px 0;
+    }
+    .addPeopleTextField {
+      height: 34px;
+      font-size: 14px;
+      margin: 9px 0;
+      width: 100%;
+    }
+  }
+  .userName {
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 8px 10px;
+    border-radius: 4px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .selectedUser {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  .notSelectedUser:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+.chatSection:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}

@@ -21,7 +21,6 @@ const ChatComponent: React.FC<ChatComponentProps> = () => {
   const [getRoomById] = useLazyQuery(GET_ROOM_BY_ID, {
     fetchPolicy: 'no-cache',
     onCompleted: (data: { getRoomById: GetRoomByIdResponse }) => {
-      console.log('getRoomById', data.getRoomById, currentUserData?.id);
       const formattedData: RoomDataType = {
         id: data.getRoomById.id,
         roomName: data.getRoomById.roomName,

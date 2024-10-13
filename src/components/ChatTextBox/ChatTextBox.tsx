@@ -1,25 +1,16 @@
 import React, { KeyboardEvent, useContext, useRef } from 'react';
 import { ChatTextBoxProps } from '../../interfaces/ChatInterface';
 import CustomInput from '../../sharedComponent/CustomInput/CustomInput';
-import styles from './ChatTextBox.module.scss';
-import { useLazyQuery, useMutation } from '@apollo/client';
-import { CREATE_MESSAGE } from '../../queries/ChatQuery';
 import { AppContext } from '../../providers/AppProvider';
 import { useParams } from 'react-router-dom';
 import { ChatContext } from '../../providers/ChatProvider';
+import styles from './ChatTextBox.module.scss';
 
 const ChatTextBox: React.FC<ChatTextBoxProps> = () => {
   const { roomId } = useParams();
   const { currentUserData } = useContext(AppContext);
   const { chatSocket } = useContext(ChatContext);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const [createMessage] = useMutation(CREATE_MESSAGE, {
-    fetchPolicy: 'no-cache',
-    onCompleted: (data) => {
-      console.log(data);
-    },
-  });
 
   const sendMessage = () => {
     if (inputRef.current) {

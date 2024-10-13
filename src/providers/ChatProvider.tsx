@@ -7,6 +7,7 @@ import {
   useState,
 } from 'react';
 import { io, Socket } from 'socket.io-client';
+import { config } from '../configs/config';
 
 interface ChatContextType {
   chatSocket: Socket;
@@ -22,14 +23,13 @@ export const ChatContext = createContext<ChatContextType>({
 export default function ChatProvider({ children }: PropsWithChildren) {
   const [chatSocket, setChatSocket] = useState<Socket>(defaultSocket);
   useEffect(() => {
-    const socket = io('http://localhost:3002/', {
+    const socket = io(config.backend_url, {
       transports: ['websocket'],
     });
     socket.on('connect', () => {
-      console.log('Connected to WebSocket server');
+      console.log('Chat connection success');
     });
     setChatSocket(socket);
-    console.log('render check');
     return () => {
       socket.disconnect();
     };

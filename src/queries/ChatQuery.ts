@@ -80,14 +80,19 @@ export const CREATE_MESSAGE = gql`
 export const GET_ALL_MESSAGES = gql`
   query GetAllMessagesByRoomId($id: String!, $pagination: GetPaginationInput!) {
     getAllMessagesByRoomId(id: $id, pagination: $pagination) {
+      totalCount
       messages {
         id
         message
         user {
           id
+          profileUrl
         }
+        room {
+          id
+        }
+        createdAt
       }
-      totalCount
     }
   }
 `;

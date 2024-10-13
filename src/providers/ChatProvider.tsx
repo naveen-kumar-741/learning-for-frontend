@@ -23,7 +23,7 @@ export const ChatContext = createContext<ChatContextType>({
 export default function ChatProvider({ children }: PropsWithChildren) {
   const [chatSocket, setChatSocket] = useState<Socket>(defaultSocket);
   useEffect(() => {
-    const socket = io(config.backend_url, {
+    const socket = io(config.backend_url_for_websocket, {
       transports: ['websocket'],
     });
     socket.on('connect', () => {

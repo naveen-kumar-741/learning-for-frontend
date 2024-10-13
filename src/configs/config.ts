@@ -7,6 +7,8 @@ const CLIENT_ID: string | undefined = process.env.REACT_APP_CLIENT_ID;
 
 const FRONTEND_URL: string | undefined = process.env.REACT_APP_DOMAIN_NAME;
 const BACKEND_URL: string | undefined = process.env.REACT_APP_BACKEND_URL;
+const BACKEND_URL_FOR_WEBSOCKET: string | undefined =
+  process.env.REACT_APP_BACKEND_URL_FOR_WEBSOCKET;
 
 const COGNITO_DOMAIN: string | undefined = process.env.REACT_APP_COGNITO_DOMAIN;
 const SIGN_OUT_URI: string | undefined = process.env.REACT_APP_SIGN_OUT_URI;
@@ -15,6 +17,7 @@ const SIGN_IN_URI: string | undefined = process.env.REACT_APP_SIGN_IN_URI;
 export const config = {
   frontend_url: String(FRONTEND_URL),
   backend_url: String(BACKEND_URL),
+  backend_url_for_websocket: String(BACKEND_URL_FOR_WEBSOCKET),
   amplifyConfig: {
     aws_project_region: REGION,
     aws_cognito_identity_pool_id: IDENTIFY_POOL_ID,

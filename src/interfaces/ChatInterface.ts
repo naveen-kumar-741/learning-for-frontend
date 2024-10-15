@@ -57,7 +57,7 @@ export interface ChatSideBarProps {
 }
 
 export interface ConversationSideBarProps {
-  handleAddConversation: (id: string[]) => void;
+  handleAddConversation: (id: string[] | string) => void;
   type: ChatSideBarType;
   handleSearch: (key: string) => void;
   showAddTextField: boolean;

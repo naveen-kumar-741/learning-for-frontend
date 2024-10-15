@@ -85,31 +85,33 @@ const ChatSideBar: React.FC = () => {
     });
   }, 300);
 
-  const handleAddPeople = async (id: string[]) => {
-    const roomData: unknown = await checkRoomAlreadyExist({
-      variables: {
-        senderId: currentUserData?.id,
-        recipientId: id?.[0],
-      },
-    });
-    if (
-      (roomData as CheckRoomAlreadyExistResponse).checkRoomAlreadyExist
-        ?.length > 0
-    ) {
-      navigate(
-        `/chat/${
-          (roomData as CheckRoomAlreadyExistResponse).checkRoomAlreadyExist?.[0]
-            ?.id
-        }`
-      );
-    } else {
-      createRoom({
+  const handleAddPeople = async (id: string[] | string) => {
+    if (typeof id === 'string') {
+      const roomData = await checkRoomAlreadyExist({
         variables: {
-          createRoomInput: {
-            users: [{ id: currentUserData?.id }, { id: id[0] }],
-          },
+          senderId: currentUserData?.id,
+          recipientId: id,
         },
       });
+      if (
+        (roomData.data as CheckRoomAlreadyExistResponse).checkRoomAlreadyExist
+          ?.length > 0
+      ) {
+        navigate(
+          `/chat/${
+            (roomData.data as CheckRoomAlreadyExistResponse)
+              .checkRoomAlreadyExist?.[0]?.id
+          }`
+        );
+      } else {
+        createRoom({
+          variables: {
+            createRoomInput: {
+              users: [{ id: currentUserData?.id }, { id: id }],
+            },
+          },
+        });
+      }
     }
   };
 

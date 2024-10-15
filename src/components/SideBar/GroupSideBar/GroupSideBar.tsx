@@ -90,18 +90,20 @@ const GroupSideBar: React.FC = () => {
     });
   }, 300);
 
-  const handleAddGroup = async (id: string[]) => {
-    createRoom({
-      variables: {
-        createRoomInput: {
-          users: [
-            { id: currentUserData?.id },
-            // converting string[] to array of object
-            ...id.map((data) => ({ id: data })),
-          ],
+  const handleAddGroup = async (id: string[] | string) => {
+    if (typeof id !== 'string') {
+      createRoom({
+        variables: {
+          createRoomInput: {
+            users: [
+              { id: currentUserData?.id },
+              // converting string[] to array of object
+              ...id.map((data) => ({ id: data })),
+            ],
+          },
         },
-      },
-    });
+      });
+    }
   };
 
   return (

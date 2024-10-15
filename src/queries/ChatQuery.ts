@@ -14,6 +14,23 @@ export const GET_ALL_ONE_ON_ONE_ROOMS = gql`
   }
 `;
 
+export const GET_ALL_GROUPS = gql`
+  query GetAllGroups($pagination: GetPaginationInput!) {
+    getAllGroups(pagination: $pagination) {
+      totalCount
+      rooms {
+        roomName
+        id
+        users {
+          id
+          emailId
+          userName
+        }
+      }
+    }
+  }
+`;
+
 export const GET_ALL_USER = gql`
   query GetAllUser($pagination: GetPaginationInput!) {
     getAllUser(pagination: $pagination) {

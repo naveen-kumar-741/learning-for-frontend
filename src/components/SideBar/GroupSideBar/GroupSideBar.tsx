@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { AppContext } from '../../../providers/AppProvider';
 import debounce from 'lodash.debounce';
@@ -13,17 +13,18 @@ import {
   GET_ALL_ONE_ON_ONE_ROOMS,
   GET_ALL_USER,
   CHECK_ROOM_ALREADY_EXIST,
+  GET_ALL_GROUPS,
 } from '../../../queries/ChatQuery';
 import ConversationSideBar from '../../../sharedComponent/ConversationSideBar/ConversationSideBar';
 
-const ChatSideBar: React.FC = () => {
+const GroupSideBar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { currentUserData } = useContext(AppContext);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [showAddPeople, setShowAddPeople] = useState<boolean>(false);
-  const [oneOnOneRooms, setOneOnOneRooms] = useState<RoomsType[]>([]);
-  const [allUser, setAllUser] = useState<UserType[]>([]);
+  const [showAddGroup, setShowAddGroup] = useState<boolean>(false);
+  const [allGroup, setAllGroups] = useState<RoomsType[]>([]);
+  const [searchResult, setSearchResult] = useState<UserType[]>([]);
   const [searchKey, setSearchKey] = useState<string>('');
 
   const [createRoom] = useMutation(CREATE_ROOM, {
@@ -35,11 +36,11 @@ const ChatSideBar: React.FC = () => {
     },
   });
 
-  const [getAllOneOnOneRooms] = useLazyQuery(GET_ALL_ONE_ON_ONE_ROOMS, {
+  const [getAllGroups] = useLazyQuery(GET_ALL_GROUPS, {
     fetchPolicy: 'no-cache',
     onCompleted: (data) => {
-      if (data.getAllOneOnOneRooms) {
-        setOneOnOneRooms(data.getAllOneOnOneRooms);
+      if (data.getAllGroups) {
+        setAllGroups(data.getAllGroups?.rooms);
       }
     },
   });
@@ -48,7 +49,7 @@ const ChatSideBar: React.FC = () => {
     fetchPolicy: 'no-cache',
     onCompleted: (data) => {
       if (data.getAllUser?.users && currentUserData?.id) {
-        setAllUser(
+        setSearchResult(
           data.getAllUser?.users?.filter(
             (user: UserType) => user.id !== currentUserData.id
           )
@@ -57,18 +58,22 @@ const ChatSideBar: React.FC = () => {
     },
   });
 
-  const [checkRoomAlreadyExist] = useLazyQuery(CHECK_ROOM_ALREADY_EXIST, {
-    fetchPolicy: 'no-cache',
-  });
-
   useEffect(() => {
-    if (searchParams.get('showAddPeople')) {
-      setShowAddPeople(true);
-      searchParams.delete('showAddPeople');
+    if (searchParams.get('showAddGroup')) {
+      setShowAddGroup(true);
+      searchParams.delete('showAddGroup');
       setSearchParams(searchParams);
     }
     if (location.pathname.includes('/chat')) {
-      getAllOneOnOneRooms();
+      getAllGroups({
+        variables: {
+          pagination: {
+            pageNo: 1,
+            perPage: 100,
+            searchParam: '',
+          },
+        },
+      });
     }
   }, [location]);
 
@@ -85,45 +90,31 @@ const ChatSideBar: React.FC = () => {
     });
   }, 300);
 
-  const handleAddPeople = async (id: string[]) => {
-    const roomData: unknown = await checkRoomAlreadyExist({
+  const handleAddGroup = async (id: string[]) => {
+    createRoom({
       variables: {
-        senderId: currentUserData?.id,
-        recipientId: id?.[0],
+        createRoomInput: {
+          users: [
+            { id: currentUserData?.id },
+            // converting string[] to array of object
+            ...id.map((data) => ({ id: data })),
+          ],
+        },
       },
     });
-    if (
-      (roomData as CheckRoomAlreadyExistResponse).checkRoomAlreadyExist
-        ?.length > 0
-    ) {
-      navigate(
-        `/chat/${
-          (roomData as CheckRoomAlreadyExistResponse).checkRoomAlreadyExist?.[0]
-            ?.id
-        }`
-      );
-    } else {
-      createRoom({
-        variables: {
-          createRoomInput: {
-            users: [{ id: currentUserData?.id }, { id: id[0] }],
-          },
-        },
-      });
-    }
   };
 
   return (
     <ConversationSideBar
-      handleAddConversation={handleAddPeople}
-      type={'chat'}
+      handleAddConversation={handleAddGroup}
+      type={'group'}
       handleSearch={debouncedSearch}
-      showAddTextField={showAddPeople}
-      setShowAddTextField={setShowAddPeople}
-      searchData={allUser}
-      conversationData={oneOnOneRooms}
+      showAddTextField={showAddGroup}
+      setShowAddTextField={setShowAddGroup}
+      searchData={searchResult}
+      conversationData={allGroup}
     />
   );
 };
 
-export default ChatSideBar;
+export default GroupSideBar;

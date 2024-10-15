@@ -70,7 +70,9 @@ const ChatBlock: React.FC<ChatBlockProps> = ({
           alt="recipient profile"
         />
         <span className={styles.recipientName}>
-          {roomDetails.recipient?.userName ?? roomDetails.recipient?.emailId}
+          {roomDetails.roomName ??
+            roomDetails.recipient?.userName ??
+            roomDetails.recipient?.emailId}
         </span>
         <span className={styles.startConversationText}>
           Let's Get This Chatter Party Started!
@@ -112,7 +114,17 @@ const ChatBlock: React.FC<ChatBlockProps> = ({
                 <MessageSentOrReceivedAt time={data.createdAt} />
               )}
             </div>
-            <span className={styles.messageText}>{data.message}</span>
+            <span
+              className={styles.messageText}
+              style={{
+                borderRadius:
+                  data.user.id === currentUserData?.id
+                    ? '10px 10px 0px 10px'
+                    : '10px 10px 10px 0px',
+              }}
+            >
+              {data.message}
+            </span>
           </div>
         ))}
     </div>
@@ -132,7 +144,7 @@ const MessageSentOrReceivedAt: React.FC<{ time: Date }> = ({ time }) => {
   const difference = currentMinutes - timeInMinutes;
 
   useEffect(() => {
-    if (difference <= 10) {
+    if (difference <= 5) {
       // Update every minute
       const intervalId = setInterval(() => {
         setCurrentMinutes(Math.floor(new Date().getTime() / (1000 * 60)));
@@ -143,7 +155,7 @@ const MessageSentOrReceivedAt: React.FC<{ time: Date }> = ({ time }) => {
 
   if (difference === 0) {
     return <span>Now</span>;
-  } else if (difference <= 10) {
+  } else if (difference <= 5) {
     return <span>{`${difference} min${difference > 1 ? 's' : ''} ago`}</span>;
   }
   return <span>{formatTimestamp(time)}</span>;

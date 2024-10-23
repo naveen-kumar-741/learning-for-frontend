@@ -9,6 +9,7 @@ import styles from './MaintainingContextComponent.module.scss';
 const MaintainingContextComponent: React.FC = () => {
   const contentData: ContentData[] = [
     {
+      id: 'maintaining-concept',
       title: 'What This Page is About',
       paragraphs: [
         `This page explains the best practices for maintaining context in a React
@@ -33,6 +34,7 @@ const MaintainingContextComponent: React.FC = () => {
       },
     },
     {
+      id: 'difference-tag',
       title: 'Difference between <a> tag and Link from react-router-dom',
       paragraphs: [],
     },
@@ -77,6 +79,7 @@ const MaintainingContextComponent: React.FC = () => {
       ],
     },
     {
+      id: 'when-to-use',
       title: 'When to Use Each:',
       type: 'bullet',
       paragraphs: [
@@ -87,6 +90,7 @@ const MaintainingContextComponent: React.FC = () => {
       ],
     },
     {
+      id: 'summary',
       title: '',
       paragraphs: [
         `In summary, while the <a> tag is suitable for traditional web navigation, Link
@@ -151,9 +155,12 @@ const MaintainingContextComponent: React.FC = () => {
         and preserves the context.
       </p>
       <OnThisPage
-        referenceLink={contentData
+        externalReferenceLink={contentData
           .map((data) => data.referenceLink)
           ?.filter((link) => !!link)}
+        referenceLink={contentData
+          ?.filter((val) => !!val.id)
+          .map((data) => ({ link: `#${data.id}`, name: data.title }))}
       />
     </div>
   );

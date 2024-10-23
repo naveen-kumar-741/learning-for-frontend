@@ -7,6 +7,7 @@ import styles from './Home.module.scss';
 const Home: React.FC = () => {
   const contentData: ContentData[] = [
     {
+      id: 'intro',
       title: 'Introduction:',
       paragraphs: [
         `In the ever-evolving landscape of web development, TypeScript and
@@ -30,6 +31,7 @@ const Home: React.FC = () => {
       ],
     },
     {
+      id: 'react-js',
       title: 'What is React.js?',
       paragraphs: [
         `React.js, commonly referred to as React, is a powerful JavaScript
@@ -45,6 +47,7 @@ const Home: React.FC = () => {
       },
     },
     {
+      id: 'typescript',
       title: 'What is TypeScript?',
       paragraphs: [
         `TypeScript is a statically typed superset of JavaScript developed
@@ -81,9 +84,12 @@ const Home: React.FC = () => {
         ))}
       </div>
       <OnThisPage
-        referenceLink={contentData
+        externalReferenceLink={contentData
           .map((data) => data.referenceLink)
           ?.filter((link) => !!link)}
+        referenceLink={contentData
+          ?.filter((val) => !!val.id)
+          .map((data) => ({ link: `#${data.id}`, name: data.title }))}
       />
     </div>
   );

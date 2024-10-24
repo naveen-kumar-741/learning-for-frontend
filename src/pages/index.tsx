@@ -16,29 +16,41 @@ const App = () => {
     <AppProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="chat" />} />
+          <Route
+            path="/"
+            element={<Navigate to="/learning-for-frontend/doc" />}
+          />
           <Route element={<PrivateRoutes />}>
             <Route
-              path="/doc-private"
+              path="/learning-for-frontend/doc-private"
               element={<CommonLayout component={Home} />}
             />
             <Route
-              path="/chat/:roomId?"
+              path="/learning-for-frontend/chat/:roomId?"
               element={<CommonLayout component={ChatComponent} />}
             />
           </Route>
-          <Route path="/doc" element={<CommonLayout component={Home} />} />
           <Route
-            path="/img-preview-demo"
+            path="/learning-for-frontend/doc"
+            element={<CommonLayout component={Home} />}
+          />
+          <Route
+            path="/learning-for-frontend/img-preview-demo"
             element={<CommonLayout component={ImagePreview} />}
           />
           <Route
-            path="/maintain-context"
+            path="/learning-for-frontend/maintain-context"
             element={<CommonLayout component={MaintainingContextComponent} />}
           />
           <Route element={<AuthRoutes />}>
-            <Route path="/sign-in" element={<SignInPage />} />
-            <Route path="/sign-up" element={<SignUpPage />} />
+            <Route
+              path="/learning-for-frontend/sign-in"
+              element={<SignInPage />}
+            />
+            <Route
+              path="/learning-for-frontend/sign-up"
+              element={<SignUpPage />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>

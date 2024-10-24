@@ -1,6 +1,7 @@
 {
   "name": "typescript_sample",
   "version": "0.1.0",
+  "homepage": "https://naveen-kumar-741.github.io/learning-for-frontend",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.11.8",
@@ -36,7 +37,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -55,5 +58,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.2.0"
   }
 }

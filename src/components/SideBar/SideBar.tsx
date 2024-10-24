@@ -52,7 +52,8 @@ const SideBar: React.FC = () => {
   return (
     <div className={styles.sideBar}>
       <div className={styles.sideBarBtn}>
-        <button
+        {/* commented for deploying purpose */}
+        {/* <button
           className={`${styles.sideBarTab} ${
             selectedTab === 'chat' ? styles.active : ''
           }`}
@@ -66,7 +67,7 @@ const SideBar: React.FC = () => {
           }}
         >
           <span className={styles.sideBarTabText}>Chat</span>
-        </button>
+        </button> */}
 
         <button
           className={`${styles.sideBarTab} ${

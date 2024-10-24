@@ -8,15 +8,15 @@ const TopicsSideBar: React.FC = () => {
   const topics: TopicsType[] = [
     {
       name: 'Introduction',
-      route: '/doc',
+      route: '/learning-for-frontend/doc',
     },
     {
       name: 'Image Preview Demo',
-      route: '/img-preview-demo',
+      route: '/learning-for-frontend/img-preview-demo',
     },
     {
       name: 'Maintaining Context',
-      route: '/maintain-context',
+      route: '/learning-for-frontend/maintain-context',
     },
   ];
 

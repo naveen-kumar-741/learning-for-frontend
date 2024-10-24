@@ -11,7 +11,7 @@ const Header: React.FC = () => {
       <div className={styles.headerContent}>
         <img
           className={styles.logo}
-          src="/assets/images/logo_final.jpg"
+          src="/learning-for-frontend/assets/images/logo_final.jpg"
           alt="logo"
         />
         <OverlayTrigger
@@ -23,7 +23,10 @@ const Header: React.FC = () => {
               <div className={styles.profilePopover}>
                 {currentUserData ? (
                   <React.Fragment>
-                    <Link className={styles.profileOption} to={'/profile'}>
+                    <Link
+                      className={styles.profileOption}
+                      to={'/learning-for-frontend/profile'}
+                    >
                       EditProfile
                     </Link>
                     <span
@@ -34,7 +37,10 @@ const Header: React.FC = () => {
                     </span>
                   </React.Fragment>
                 ) : (
-                  <Link className={styles.profileOption} to={'/sign-in'}>
+                  <Link
+                    className={styles.profileOption}
+                    to={'/learning-for-frontend/sign-in'}
+                  >
                     Sign In
                   </Link>
                 )}

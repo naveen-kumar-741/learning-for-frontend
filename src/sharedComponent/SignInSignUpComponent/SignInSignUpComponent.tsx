@@ -54,7 +54,7 @@ const SignInSignUpComponent = <T extends FieldValues>({
         <form className={styles.signInForm} onSubmit={handleSubmit(onSubmit)}>
           <img
             className={styles.logo}
-            src="/assets/images/logo_final.jpg"
+            src="/learning-for-frontend/assets/images/logo_final.jpg"
             alt="logo"
           />
           <div className={styles.signInFormFields}>
@@ -103,13 +103,15 @@ const SignInSignUpSwitcher: React.FC<{ type: PageType }> = ({ type }) => {
   if (type === 'signIn') {
     return (
       <span className={styles.signInFormText}>
-        Don't have an account, <Link to="/sign-up">Sign Up</Link>
+        Don't have an account,{' '}
+        <Link to="/learning-for-frontend/sign-up">Sign Up</Link>
       </span>
     );
   }
   return (
     <span className={styles.signInFormText}>
-      Already have an account, <Link to="/sign-in">Sign In</Link>
+      Already have an account,{' '}
+      <Link to="/learning-for-frontend/sign-in">Sign In</Link>
     </span>
   );
 };

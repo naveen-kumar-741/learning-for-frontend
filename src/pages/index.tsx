@@ -17,7 +17,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route
-            path="/"
+            path="/learning-for-frontend"
             element={<Navigate to="/learning-for-frontend/doc" />}
           />
           <Route element={<PrivateRoutes />}>

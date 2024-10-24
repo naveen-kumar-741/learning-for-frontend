@@ -77,7 +77,7 @@ const SideBar: React.FC = () => {
             if (selectedTab === 'topics') {
               setIsExpand((prev) => !prev);
             } else {
-              navigate('/doc?expandSideBar=true');
+              navigate('/learning-for-frontend/doc?expandSideBar=true');
             }
             setSelectedTab('topics');
           }}

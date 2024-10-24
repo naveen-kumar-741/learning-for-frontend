@@ -59,7 +59,7 @@ const ChatTextBox: React.FC<ChatTextBoxProps> = () => {
       />
       <img
         className={styles.sendIcon}
-        src="/assets/icons/ic-send.svg"
+        src="/learning-for-frontend/assets/icons/ic-send.svg"
         alt="sendIcon"
         onClick={() => sendMessage()}
       />

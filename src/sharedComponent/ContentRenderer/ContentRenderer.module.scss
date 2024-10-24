@@ -1,24 +1,25 @@
 .contentRendererSection {
-    margin-bottom: 30px;
-    .contentRendererTitle {
-        font-size: 28px;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 1);
-    }
-    .contentRendererPara,
-    .contentRendererBullets {
-        font-size: 18px;
-        color: rgba(255, 255, 255, 0.95);
-        // text-align: justify;
-    }
-    .contentRendererPara {
-        text-indent: 70px;
-    }
-    .contentRendererBullets li {
-        list-style-position: inside;
-        margin-bottom: 10px;
-    }
-    .contentRendererBullets li:last-child {
-        margin-bottom: unset;
-    }
+  margin-bottom: 30px;
+  scroll-margin-top: 105px;
+  .contentRendererTitle {
+    font-size: 28px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
+  }
+  .contentRendererPara,
+  .contentRendererBullets {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.95);
+    // text-align: justify;
+  }
+  .contentRendererPara {
+    text-indent: 70px;
+  }
+  .contentRendererBullets li {
+    list-style-position: inside;
+    margin-bottom: 10px;
+  }
+  .contentRendererBullets li:last-child {
+    margin-bottom: unset;
+  }
 }

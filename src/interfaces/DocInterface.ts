@@ -1,6 +1,7 @@
 export interface OnThisPageProps {
   // sectionsRef: React.MutableRefObject<(HTMLElement | null)[]>;
   referenceLink: ReferenceLinkType[];
+  externalReferenceLink: ReferenceLinkType[];
 }
 
 export interface TopicsType {
@@ -16,6 +17,7 @@ export interface ReferenceLinkType {
 }
 
 export interface ContentData {
+  id?: string;
   title: string;
   paragraphs: string[];
   referenceLink?: ReferenceLinkType;

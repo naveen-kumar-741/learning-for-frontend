@@ -58,14 +58,17 @@ export default function AppProvider({ children }: PropsWithChildren) {
       await getCurrentUserData();
     } else {
       console.log('Token not found');
-      handleSignOut();
+      handleSignOut('Token not found');
     }
   };
 
-  const handleSignOut = async () => {
-    await signOut();
+  const handleSignOut = async (error?: string) => {
     localStorage.clear();
     setCurrentUserData(undefined);
+    if (error !== 'Token not found') {
+      await signOut();
+      window.location.reload();
+    }
   };
 
   useEffect(() => {

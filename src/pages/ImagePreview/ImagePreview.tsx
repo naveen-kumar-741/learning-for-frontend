@@ -9,6 +9,7 @@ import styles from './ImagePreview.module.scss';
 const ImagePreview: React.FC = () => {
   const contentData: ContentData[] = [
     {
+      id: 'data-url',
       title: 'What This Page is About',
       paragraphs: [
         `Welcome to the Image Preview Demo! This page is dedicated to exploring a
@@ -27,6 +28,7 @@ const ImagePreview: React.FC = () => {
       },
     },
     {
+      id: 'concept-covered',
       title: 'Key Concepts Covered',
       type: 'bullet',
       paragraphs: [
@@ -124,7 +126,9 @@ return(
           ref={(el: HTMLElement) => (sectionsRef.current[idx] = el)}
         />
       ))}
-      <div className={styles.contentRendererTitle}>Code Snippet</div>
+      <div className={styles.contentRendererTitle} id="code-snippet">
+        Code Snippet
+      </div>
       <div
         className={`${styles.imagePreviewDemoSection} ${
           isExpand ? 'flex-column' : 'flex-row'
@@ -171,9 +175,15 @@ return(
         </div>
       </div>
       <OnThisPage
-        referenceLink={contentData
+        externalReferenceLink={contentData
           .map((data) => data.referenceLink)
           ?.filter((link) => !!link)}
+        referenceLink={[
+          ...contentData
+            ?.filter((val) => !!val.id)
+            .map((data) => ({ link: `#${data.id}`, name: data.title })),
+          { name: 'Code Snippet', link: '#code-snippet' },
+        ]}
       />
     </div>
   );

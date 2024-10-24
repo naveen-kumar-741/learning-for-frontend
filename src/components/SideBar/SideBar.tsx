@@ -18,7 +18,7 @@ import {
 } from '../../queries/ChatQuery';
 import {
   CheckRoomAlreadyExistResponse,
-  OneOnOneRoomsType,
+  RoomsType,
   UserType,
 } from '../../interfaces/ChatInterface';
 import CustomInput from '../../sharedComponent/CustomInput/CustomInput';
@@ -26,6 +26,7 @@ import styles from './SideBar.module.scss';
 import { SidebarContext } from '../../providers/SidebarProvider';
 import TopicsSideBar from './TopicsSideBar/TopicsSideBar';
 import ChatSideBar from './ChatSideBar/ChatSideBar';
+import GroupSideBar from './GroupSideBar/GroupSideBar';
 
 const SideBar: React.FC = () => {
   // const [isExpand, setIsExpand] = useState<boolean>(false);
@@ -94,6 +95,7 @@ const SideBar: React.FC = () => {
           // <div className={}>
           <React.Fragment>
             <ChatSideBar />
+            <GroupSideBar />
           </React.Fragment>
           // </div>
         )}

@@ -7,7 +7,12 @@ const ContentRenderer = React.forwardRef<HTMLElement, ContentRendererProps>(
   ({ contentData, ...rest }, ref: ForwardedRef<HTMLElement>) => {
     const type = contentData.type || 'para';
     return (
-      <section className={styles.contentRendererSection} ref={ref} {...rest}>
+      <section
+        className={styles.contentRendererSection}
+        id={contentData.id}
+        ref={ref}
+        {...rest}
+      >
         <div className={styles.contentRendererTitle}>{contentData.title}</div>
         {type === 'para' ? (
           <div className={styles.contentRendererPara}>

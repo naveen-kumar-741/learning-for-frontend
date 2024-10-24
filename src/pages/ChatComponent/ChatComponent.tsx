@@ -58,7 +58,9 @@ const ChatComponent: React.FC<ChatComponentProps> = () => {
           />
         )}
         <span>
-          {roomDetails?.recipient?.userName ?? roomDetails?.recipient?.emailId}
+          {roomDetails?.roomName ??
+            roomDetails?.recipient?.userName ??
+            roomDetails?.recipient?.emailId}
         </span>
       </div>
       <section

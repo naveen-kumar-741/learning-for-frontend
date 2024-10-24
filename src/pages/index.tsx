@@ -22,12 +22,12 @@ const App = () => {
               path="/doc-private"
               element={<CommonLayout component={Home} />}
             />
+            <Route
+              path="/chat/:roomId?"
+              element={<CommonLayout component={ChatComponent} />}
+            />
           </Route>
           <Route path="/doc" element={<CommonLayout component={Home} />} />
-          <Route
-            path="/chat/:roomId?"
-            element={<CommonLayout component={ChatComponent} />}
-          />
           <Route
             path="/img-preview-demo"
             element={<CommonLayout component={ImagePreview} />}

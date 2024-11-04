@@ -16,7 +16,7 @@ const App = () => {
     <AppProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="chat" />} />
+          <Route path="/" element={<Navigate to="/chat" />} />
           <Route element={<PrivateRoutes />}>
             <Route
               path="/doc-private"

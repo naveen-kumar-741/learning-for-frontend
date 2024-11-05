@@ -5,6 +5,7 @@ import {
   SetStateAction,
   useState,
 } from 'react';
+import { useLocation } from 'react-router-dom';
 
 type SelectedTab = 'chat' | 'topics';
 
@@ -23,11 +24,13 @@ export const SidebarContext = createContext<SidebarContextType>({
 });
 
 export default function SideBarProvider({ children }: PropsWithChildren) {
+  const hashPathname = window.location.hash.replace('#', '');
+
   const [isExpand, setIsExpand] = useState<boolean>(
-    window.location.pathname?.includes('/chat')
+    hashPathname?.includes('/chat')
   );
   const [selectedTab, setSelectedTab] = useState<SelectedTab>(
-    window.location.pathname?.includes('/chat') ? 'chat' : 'topics'
+    hashPathname?.includes('/chat') ? 'chat' : 'topics'
   );
   return (
     <SidebarContext.Provider

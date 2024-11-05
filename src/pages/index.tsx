@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import CommonLayout from '../layouts/CommonLayout/CommonLayout';
 import PrivateRoutes from '../layouts/PrivateRoutes';
 import Home from './Home/Home';
@@ -14,7 +14,9 @@ import ChatComponent from './ChatComponent/ChatComponent';
 const App = () => {
   return (
     <AppProvider>
-      <BrowserRouter>
+      {/* BrowserRouter is commented for static hosting and hash router added instead */}
+      {/* <BrowserRouter> */}
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Navigate to="/chat" />} />
           <Route element={<PrivateRoutes />}>
@@ -41,7 +43,8 @@ const App = () => {
             <Route path="/sign-up" element={<SignUpPage />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
+      {/* </BrowserRouter> */}
     </AppProvider>
   );
 };

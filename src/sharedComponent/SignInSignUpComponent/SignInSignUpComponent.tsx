@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FieldValues, Path } from 'react-hook-form';
+import type { FieldValues, Path } from 'react-hook-form';
 import CustomButton from '../CustomButton/CustomButton';
-import {
+import type {
   PageType,
   SignInSignUpComponentProps,
 } from '../../interfaces/SignInSignUpInterfaces';

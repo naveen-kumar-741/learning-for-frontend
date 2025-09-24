@@ -3,16 +3,10 @@ import { useLazyQuery, useMutation } from '@apollo/client';
 import { AppContext } from '../../../providers/AppProvider';
 import debounce from 'lodash.debounce';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-import {
-  CheckRoomAlreadyExistResponse,
-  RoomsType,
-  UserType,
-} from '../../../interfaces/ChatInterface';
+import type { RoomsType, UserType } from '../../../interfaces/ChatInterface';
 import {
   CREATE_ROOM,
-  GET_ALL_ONE_ON_ONE_ROOMS,
   GET_ALL_USER,
-  CHECK_ROOM_ALREADY_EXIST,
   GET_ALL_GROUPS,
 } from '../../../queries/ChatQuery';
 import ConversationSideBar from '../../../sharedComponent/ConversationSideBar/ConversationSideBar';
@@ -25,7 +19,7 @@ const GroupSideBar: React.FC = () => {
   const [showAddGroup, setShowAddGroup] = useState<boolean>(false);
   const [allGroup, setAllGroups] = useState<RoomsType[]>([]);
   const [searchResult, setSearchResult] = useState<UserType[]>([]);
-  const [searchKey, setSearchKey] = useState<string>('');
+  const [, setSearchKey] = useState<string>('');
 
   const [createRoom] = useMutation(CREATE_ROOM, {
     fetchPolicy: 'no-cache',

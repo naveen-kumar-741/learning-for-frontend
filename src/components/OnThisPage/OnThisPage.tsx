@@ -1,5 +1,5 @@
 import React from 'react';
-import { OnThisPageProps } from '../../interfaces/DocInterface';
+import type { OnThisPageProps } from '../../interfaces/DocInterface';
 import styles from './OnThisPage.module.scss';
 
 const OnThisPage: React.FC<OnThisPageProps> = ({

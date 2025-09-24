@@ -1,12 +1,15 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
-import { ChatBlockProps, MessageType } from '../../interfaces/ChatInterface';
+import React, { useContext, useEffect, useState } from 'react';
+import type {
+  ChatBlockProps,
+  MessageType,
+} from '../../interfaces/ChatInterface';
 import styles from './ChatBlock.module.scss';
 import { AppContext } from '../../providers/AppProvider';
 import { ChatContext } from '../../providers/ChatProvider';
 import { useLazyQuery } from '@apollo/client';
 import { GET_ALL_MESSAGES } from '../../queries/ChatQuery';
 import { useParams } from 'react-router-dom';
-import { compareWithCurrentTime, formatTimestamp } from '../../utils/helper';
+import { formatTimestamp } from '../../utils/helper';
 
 const ChatBlock: React.FC<ChatBlockProps> = ({
   roomDetails,

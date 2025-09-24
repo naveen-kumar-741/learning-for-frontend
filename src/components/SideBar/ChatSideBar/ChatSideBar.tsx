@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { AppContext } from '../../../providers/AppProvider';
 import debounce from 'lodash.debounce';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-import {
+import type {
   CheckRoomAlreadyExistResponse,
   RoomsType,
   UserType,
@@ -24,7 +24,6 @@ const ChatSideBar: React.FC = () => {
   const [showAddPeople, setShowAddPeople] = useState<boolean>(false);
   const [oneOnOneRooms, setOneOnOneRooms] = useState<RoomsType[]>([]);
   const [allUser, setAllUser] = useState<UserType[]>([]);
-  const [searchKey, setSearchKey] = useState<string>('');
 
   const [createRoom] = useMutation(CREATE_ROOM, {
     fetchPolicy: 'no-cache',
@@ -73,7 +72,6 @@ const ChatSideBar: React.FC = () => {
   }, [location]);
 
   const debouncedSearch = debounce((value) => {
-    setSearchKey(value);
     getAllUser({
       variables: {
         pagination: {

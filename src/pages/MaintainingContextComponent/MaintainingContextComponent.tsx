@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import OnThisPage from '../../components/OnThisPage/OnThisPage';
 import { CodeBlock, obsidian } from 'react-code-blocks';
 import { Link } from 'react-router-dom';
-import { ContentData } from '../../interfaces/DocInterface';
+import type { ContentData } from '../../interfaces/DocInterface';
 import ContentRenderer from '../../sharedComponent/ContentRenderer/ContentRenderer';
 import styles from './MaintainingContextComponent.module.scss';
 

@@ -1,27 +1,5 @@
-import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
-import {
-  Link,
-  useLocation,
-  useNavigate,
-  useParams,
-  useSearchParams,
-} from 'react-router-dom';
-import debounce from 'lodash.debounce';
-import { AppContext } from '../../providers/AppProvider';
-import { TopicsType } from '../../interfaces/DocInterface';
-import { useLazyQuery, useMutation } from '@apollo/client';
-import {
-  CHECK_ROOM_ALREADY_EXIST,
-  CREATE_ROOM,
-  GET_ALL_ONE_ON_ONE_ROOMS,
-  GET_ALL_USER,
-} from '../../queries/ChatQuery';
-import {
-  CheckRoomAlreadyExistResponse,
-  RoomsType,
-  UserType,
-} from '../../interfaces/ChatInterface';
-import CustomInput from '../../sharedComponent/CustomInput/CustomInput';
+import React, { useContext, useEffect } from 'react';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import styles from './SideBar.module.scss';
 import { SidebarContext } from '../../providers/SidebarProvider';
 import TopicsSideBar from './TopicsSideBar/TopicsSideBar';

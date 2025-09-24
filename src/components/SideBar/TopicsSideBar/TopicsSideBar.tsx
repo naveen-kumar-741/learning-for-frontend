@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { TopicsType } from '../../../interfaces/DocInterface';
+import type { TopicsType } from '../../../interfaces/DocInterface';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './TopicsSideBar.module.scss';
 

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import {
+import type {
   ChatComponentProps,
   GetRoomByIdResponse,
   RoomDataType,

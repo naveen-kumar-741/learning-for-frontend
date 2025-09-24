@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { signIn, signUp } from 'aws-amplify/auth';
-import { SignUpSubmitForm } from '../../interfaces/SignInSignUpInterfaces';
+import type { SignUpSubmitForm } from '../../interfaces/SignInSignUpInterfaces';
 import SignInSignUpComponent from '../../sharedComponent/SignInSignUpComponent/SignInSignUpComponent';
 import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../../queries/AuthQuery';

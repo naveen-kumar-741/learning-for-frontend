@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import ContentRenderer from '../../sharedComponent/ContentRenderer/ContentRenderer';
 import OnThisPage from '../../components/OnThisPage/OnThisPage';
-import { ContentData } from '../../interfaces/DocInterface';
+import type { ContentData } from '../../interfaces/DocInterface';
 import styles from './Home.module.scss';
 
 const Home: React.FC = () => {

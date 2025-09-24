@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { signIn } from 'aws-amplify/auth';
-import { SignInSubmitForm } from '../../interfaces/SignInSignUpInterfaces';
+import type { SignInSubmitForm } from '../../interfaces/SignInSignUpInterfaces';
 import SignInSignUpComponent from '../../sharedComponent/SignInSignUpComponent/SignInSignUpComponent';
 import { getUser } from '../../utils/helper';
 import { useNavigate } from 'react-router-dom';

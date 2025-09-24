@@ -1,6 +1,7 @@
-import React, { ForwardedRef } from 'react';
+import React from 'react';
+import type { ForwardedRef } from 'react';
 import Markdown from 'react-markdown';
-import { ContentRendererProps } from '../../interfaces/DocInterface';
+import type { ContentRendererProps } from '../../interfaces/DocInterface';
 import styles from './ContentRenderer.module.scss';
 
 const ContentRenderer = React.forwardRef<HTMLElement, ContentRendererProps>(

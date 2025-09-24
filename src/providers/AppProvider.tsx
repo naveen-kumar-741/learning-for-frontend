@@ -1,17 +1,10 @@
-import {
-  createContext,
-  PropsWithChildren,
-  useState,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-} from 'react';
+import { createContext, useState, useEffect } from 'react';
+import type { PropsWithChildren } from 'react';
 import { IntlProvider } from 'react-intl';
 import messages from '../utils/messages';
 import { useLazyQuery } from '@apollo/client';
 import { GET_CURRENT_USER } from '../queries/AuthQuery';
 import { signOut } from 'aws-amplify/auth';
-import { useLocation } from 'react-router-dom';
 import SideBarProvider from './SidebarProvider';
 import ChatProvider from './ChatProvider';
 

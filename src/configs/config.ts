@@ -1,18 +1,16 @@
-const REGION: string | undefined = process.env.REACT_APP_REGION;
+const REGION: string | undefined = import.meta.env.VITE_REGION;
+const IDENTIFY_POOL_ID: string | undefined = import.meta.env.VITE_IDENTIFY_POOL_ID;
+const USER_POOL_ID: string | undefined = import.meta.env.VITE_USER_POOL_ID;
+const CLIENT_ID: string | undefined = import.meta.env.VITE_CLIENT_ID;
 
-const IDENTIFY_POOL_ID: string | undefined =
-  process.env.REACT_APP_IDENTIFY_POOL_ID;
-const USER_POOL_ID: string | undefined = process.env.REACT_APP_USER_POOL_ID;
-const CLIENT_ID: string | undefined = process.env.REACT_APP_CLIENT_ID;
-
-const FRONTEND_URL: string | undefined = process.env.REACT_APP_DOMAIN_NAME;
-const BACKEND_URL: string | undefined = process.env.REACT_APP_BACKEND_URL;
+const FRONTEND_URL: string | undefined = import.meta.env.VITE_DOMAIN_NAME;
+const BACKEND_URL: string | undefined = import.meta.env.VITE_BACKEND_URL;
 const BACKEND_URL_FOR_WEBSOCKET: string | undefined =
-  process.env.REACT_APP_BACKEND_URL_FOR_WEBSOCKET;
+  import.meta.env.VITE_BACKEND_URL_FOR_WEBSOCKET;
 
-const COGNITO_DOMAIN: string | undefined = process.env.REACT_APP_COGNITO_DOMAIN;
-const SIGN_OUT_URI: string | undefined = process.env.REACT_APP_SIGN_OUT_URI;
-const SIGN_IN_URI: string | undefined = process.env.REACT_APP_SIGN_IN_URI;
+const COGNITO_DOMAIN: string | undefined = import.meta.env.VITE_COGNITO_DOMAIN;
+const SIGN_OUT_URI: string | undefined = import.meta.env.VITE_SIGN_OUT_URI;
+const SIGN_IN_URI: string | undefined = import.meta.env.VITE_SIGN_IN_URI;
 
 export const config = {
   frontend_url: String(FRONTEND_URL),
@@ -24,12 +22,12 @@ export const config = {
     aws_cognito_region: REGION,
     aws_user_pools_id: USER_POOL_ID,
     aws_user_pools_web_client_id: CLIENT_ID,
-    federationTarget: 'COGNITO_USER_POOLS',
+    federationTarget: "COGNITO_USER_POOLS",
     oauth: {
       domain: COGNITO_DOMAIN,
       redirectSignOut: SIGN_OUT_URI,
       redirectSignIn: SIGN_IN_URI,
-      responseType: 'code',
+      responseType: "code",
     },
   },
 };

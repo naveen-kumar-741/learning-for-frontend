@@ -1,9 +1,7 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './global.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './pages/index';
-import reportWebVitals from './reportWebVitals';
 import {
   ApolloClient,
   ApolloProvider,
@@ -48,7 +46,7 @@ const authLink = setContext(async (_, { headers }) => {
   };
 });
 
-const errorLink = onError(({ graphQLErrors, operation, forward }: any) => {
+const errorLink = onError(({ graphQLErrors }: any) => {
   if (graphQLErrors && graphQLErrors.length) {
     // token expired. Refetch token using refresh token
     if (
@@ -65,7 +63,7 @@ const errorLink = onError(({ graphQLErrors, operation, forward }: any) => {
 Amplify.configure(config.amplifyConfig);
 
 const httpLink = new HttpLink({
-  uri: process.env.REACT_APP_BACKEND_URL,
+  uri: config.backend_url,
 });
 
 const client = new ApolloClient({
@@ -82,8 +80,3 @@ root.render(
   </ApolloProvider>
   // </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

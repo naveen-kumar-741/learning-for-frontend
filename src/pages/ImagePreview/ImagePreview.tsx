@@ -1,9 +1,10 @@
-import React, { ChangeEvent, useContext, useRef, useState } from 'react';
+import React, {  useContext, useRef, useState } from 'react';
+import type {ChangeEvent} from "react";
 import ContentRenderer from '../../sharedComponent/ContentRenderer/ContentRenderer';
 import OnThisPage from '../../components/OnThisPage/OnThisPage';
 import { CodeBlock, obsidian } from 'react-code-blocks';
 import { SidebarContext } from '../../providers/SidebarProvider';
-import { ContentData } from '../../interfaces/DocInterface';
+import type { ContentData } from '../../interfaces/DocInterface';
 import styles from './ImagePreview.module.scss';
 
 const ImagePreview: React.FC = () => {

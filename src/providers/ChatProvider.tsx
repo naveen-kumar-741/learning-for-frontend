@@ -1,11 +1,5 @@
-import {
-  createContext,
-  Dispatch,
-  PropsWithChildren,
-  SetStateAction,
-  useEffect,
-  useState,
-} from 'react';
+import { createContext, useEffect, useState } from 'react';
+import type { PropsWithChildren } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { config } from '../configs/config';
 

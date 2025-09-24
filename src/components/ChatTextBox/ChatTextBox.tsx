@@ -1,5 +1,6 @@
-import React, { KeyboardEvent, useContext, useRef } from 'react';
-import { ChatTextBoxProps } from '../../interfaces/ChatInterface';
+import React, {  useContext, useRef } from 'react';
+import type { KeyboardEvent } from "react";
+import type { ChatTextBoxProps } from '../../interfaces/ChatInterface';
 import CustomInput from '../../sharedComponent/CustomInput/CustomInput';
 import { AppContext } from '../../providers/AppProvider';
 import { useParams } from 'react-router-dom';

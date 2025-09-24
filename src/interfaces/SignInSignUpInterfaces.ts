@@ -1,4 +1,4 @@
-import { FieldValues, UseFormReturn } from 'react-hook-form';
+import type { FieldValues, UseFormReturn } from 'react-hook-form';
 
 export interface SignUpSubmitForm extends SignInSubmitForm {
   confirm_password: string;
@@ -9,7 +9,7 @@ export interface SignInSubmitForm {
 }
 
 export interface SignInSignUpComponentProps<T extends FieldValues> {
-  useFormReturn: UseFormReturn<T, any, undefined>;
+  useFormReturn: UseFormReturn<T, any, any>;
   onSubmit: (formData: T) => Promise<void>;
   type: PageType;
   errorMessage: string;

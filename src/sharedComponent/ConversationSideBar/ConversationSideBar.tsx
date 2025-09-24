@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useRef } from 'react';
-import { ConversationSideBarProps } from '../../interfaces/ChatInterface';
+import type { ConversationSideBarProps } from '../../interfaces/ChatInterface';
 import CustomInput from '../CustomInput/CustomInput';
 import styles from './ConversationSideBar.module.scss';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AppContext } from '../../providers/AppProvider';
 
 const ConversationSideBar: React.FC<ConversationSideBarProps> = ({

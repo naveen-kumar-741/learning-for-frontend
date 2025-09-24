@@ -1,11 +1,5 @@
-import {
-  createContext,
-  Dispatch,
-  PropsWithChildren,
-  SetStateAction,
-  useState,
-} from 'react';
-import { useLocation } from 'react-router-dom';
+import { createContext, useState } from 'react';
+import type { Dispatch, PropsWithChildren, SetStateAction } from 'react';
 
 type SelectedTab = 'chat' | 'topics';
 
@@ -24,13 +18,11 @@ export const SidebarContext = createContext<SidebarContextType>({
 });
 
 export default function SideBarProvider({ children }: PropsWithChildren) {
-  const hashPathname = window.location.hash.replace('#', '');
-
   const [isExpand, setIsExpand] = useState<boolean>(
-    hashPathname?.includes('/chat')
+    window.location.pathname?.includes('/chat')
   );
   const [selectedTab, setSelectedTab] = useState<SelectedTab>(
-    hashPathname?.includes('/chat') ? 'chat' : 'topics'
+    window.location.pathname?.includes('/chat') ? 'chat' : 'topics'
   );
   return (
     <SidebarContext.Provider
